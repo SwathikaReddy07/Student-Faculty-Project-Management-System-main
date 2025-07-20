@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 30%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #c62828;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+        }
+
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: 0.3s;
+            width: 100%;
+            background-color: #c62828;
+            color: white;
+        }
+
+        button:hover { opacity: 0.8; }
+
+        #error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .signup {
+            margin-top: 10px;
+        }
+        .signup a {
+            color: #c62828;
+            text-decoration: none;
+        }
+        .signup a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="role">Select Role:</label>
+                <select id="role">
+                    <option value="">-- Select --</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Email:</label>
+                <input type="text" id="username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password">
+            </div>
+
+            <div class="button-group">
+                <button type="button" onclick="login()">Login</button>
+            </div>
+
+            <p id="error-message">⚠️ Please fill in all fields and select a role!</p>
+
+            <div class="signup">
+                <p>Don't have an account? <a href="sign_up_student.html">Sign up as Student</a> | <a href="sign_up_faculty.html">Sign up as Faculty</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        async function login() {
+            let role = document.getElementById("role").value;
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let errorMessage = document.getElementById("error-message");
+    
+            if (role === "" || username === "" || password === "") {
+                errorMessage.innerText = "⚠️ Please fill in all fields and select a role!";
+                errorMessage.style.display = "block";
+                return;
+            }
+    
+            errorMessage.style.display = "none";
+    
+            const formData = new FormData();
+            formData.append("email", username);
+            formData.append("password", password);
+            formData.append("role", role);
+    
+            try {
+                const response = await fetch("http://localhost:8000/login", {
+                    method: "POST",
+                    body: formData
+                });
+    
+                const result = await response.json();
+    
+                if (result.success) {
+                    if (result.role === "faculty") {
+                        window.location.href = "f_home.html";
+                    } else if (result.role === "student") {
+                        window.location.href = "s_home.html";
+                    }
+                } else {
+                    errorMessage.innerText = "⚠️ " + result.message;
+                    errorMessage.style.display = "block";
+                }
+            } catch (error) {
+                console.error(error);
+                errorMessage.innerText = "⚠️ Server error. Please try again later.";
+                errorMessage.style.display = "block";
+            }
+        }
+    </script>    
+
+</body>
+</html>

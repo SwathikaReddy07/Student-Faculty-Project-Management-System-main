@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Sign-up</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #ecdbbc;
+      color: #333;
+      display: flex;
+    }
+
+    .main-content {
+      margin-left: 20px;
+      width: calc(100% - 40px);
+      padding: 20px;
+      text-align: center;
+      transition: margin-left 0.3s ease-in-out;
+    }
+
+    .container {
+      width: 60%;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      text-align: left;
+    }
+
+    h2 {
+      text-align: center;
+      color: #c62828;
+    }
+
+    .form-group {
+      margin: 15px 0;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: #f8f8f8;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+      transition: 0.3s;
+      background-color: #c62828;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-content" id="main-content">
+    <div class="container">
+      <h2>Student Sign-up Details</h2>
+      <form id="signup-form">
+        <div class="form-group"><label>Student ID</label><input type="text" id="student-id"></div>
+        <div class="form-group"><label>First Name</label><input type="text" id="first-name"></div>
+        <div class="form-group"><label>Middle Name (Optional)</label><input type="text" id="middle-name"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" id="last-name"></div>
+        <div class="form-group"><label>Gender</label>
+          <select id="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" id="email"></div>
+        <div class="form-group"><label>Phone Number</label><input type="text" id="phone"></div>
+        <div class="form-group">
+          <label>Department</label>
+          <select id="department">
+            <option>Computer Science</option>
+            <option>Artificial Intelligence</option>
+            <option>Electrical Engineering</option>
+            <option>Mechanical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Electronics and Communication</option>
+            <option>Biotechnology</option>
+            <option>Computational Biology</option>
+            <option>Computation Mathematics</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Branch</label>
+          <select id="branch">
+            <option>CSE</option>
+            <option>ARI</option>
+            <option>ECE</option>
+            <option>MEC</option>
+            <option>CIV</option>
+            <option>ECM</option>
+            <option>BIT</option>
+            <option>CAB</option>
+            <option>CAM</option>
+          </select>
+        </div>      
+        <div class="form-group"><label>Year of Study</label><input type="number" id="year-of-study" min="1" max="4"></div>
+        <div class="form-group">
+          <label>Skills</label>
+          <textarea id="skills" placeholder="E.g. Python, JavaScript, Machine Learning"></textarea>
+        </div>
+        <div class="form-group"><label>CGPA (0-10)</label><input type="number" id="cgpa" min="0" max="10" step="0.01"></div>
+        <div class="form-group"><label>Date of Birth</label><input type="date" id="birthday"></div>  
+        <div class="form-group"><label>Password</label><input type="password" id="password"></div>
+        <div class="button-group">
+          <button type="button" onclick="redirectToLogin()">Create Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector("button").addEventListener("click", async () => {
+      const formData = new FormData();
+      formData.append("student_id", document.getElementById("student-id").value);
+      formData.append("first_name", document.getElementById("first-name").value);
+      formData.append("middle_name", document.getElementById("middle-name").value);
+      formData.append("last_name", document.getElementById("last-name").value);
+      formData.append("gender", document.getElementById("gender").value);
+      formData.append("email", document.getElementById("email").value);
+      formData.append("phone", document.getElementById("phone").value);
+      formData.append("department", document.getElementById("department").value);
+      formData.append("branch", document.getElementById("branch").value);
+      formData.append("year_of_study", document.getElementById("year-of-study").value);
+      formData.append("skills", document.getElementById("skills").value);
+      formData.append("cgpa", document.getElementById("cgpa").value);
+      formData.append("birthday", document.getElementById("birthday").value);
+      formData.append("projects", "");
+      formData.append("applications", "");
+      formData.append("password", document.getElementById("password").value);
+  
+      const response = await fetch("http://127.0.0.1:8000/student_signup_details", {
+        method: "POST",
+        body: formData,
+      });
+  
+      const result = await response.json();
+      alert(result.message);
+      if (result.status === "success") {
+        window.location.href = "login.html";
+      }
+    });
+  </script>  
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Project</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+            display: flex;
+        }
+
+        /* Sidebar / Dashboard */
+        .dashboard {
+            width: 250px;
+            height: 100vh;
+            background-color: #c62828;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: fixed;
+            left: -250px; /* Initially hidden */
+            top: 0;
+            transition: left 0.3s ease-in-out;
+        }
+        .dashboard h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .nav-links a:hover {
+            background: black;
+        }
+
+        /* Profile Dropdown */
+        .profile-container {
+            position: relative;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .profile:hover {
+            background: black;
+        }
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .profile-dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .profile-dropdown a:hover {
+            background: #ddd;
+        }
+        .profile-container:hover .profile-dropdown {
+            display: block;
+        }
+
+        /* Hamburger Menu */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 20px;
+            width: calc(100% - 50px);
+            padding: 20px;
+            text-align: center;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        /* Form Styling */
+        .container {
+            width: 50%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        h1 {
+            text-align: center;
+            color: #c62828;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 16px;
+            color: black;
+        }
+
+        input, textarea {
+            width: 97%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: black;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #c62828;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .submit-btn:hover {
+            background: black;
+        }
+
+        #success-message {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            display: none;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <h2>Dashboard</h2>
+        <div class="nav-links">
+            <a href="f_home.html"> Home</a>
+            <a href="f_projects.html"> Projects</a>
+            <a href="f_meetings.html"> Meetings</a>
+
+            <!-- Profile Dropdown Below Meetings -->
+            <div class="profile-container">
+                <div class="profile"> Profile</div>
+                <div class="profile-dropdown">
+                    <a href="f_personal_details.html"> Personal Details</a>
+                    <a href="f_my_projects.html"> My Projects</a>
+                    <a href="login.html"> LogOut</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <h1>Add New Project</h1>
+
+        <div class="container">
+            <form id="add-project-form">
+                <div class="form-group">
+                    <label for="project-id">Project ID</label>
+                    <input type="text" id="project-id" name="project-id" placeholder="Enter project id" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-title">Project Title</label>
+                    <input type="text" id="project-title" name="project-title" placeholder="Enter project title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="faculty-name">Faculty Name</label>
+                    <input type="text" id="faculty-name" name="faculty-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="faculty-id">Faculty ID</label>
+                    <input type="text" id="faculty-id" name="faculty-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department / Specialization</label>
+                    <input type="text" id="department" name="department" placeholder="AI & Healthcare" required>
+                </div>
+                <div class="form-group">
+                    <label for="skills">Skills Required</label>
+                    <input type="text" id="skills" name="skills" placeholder="Machine Learning, Python, TensorFlow..." required>
+                </div>
+                <div class="form-group">
+                    <label for="overview">Project Overview</label>
+                    <textarea id="overview" name="overview" rows="4" placeholder="Provide a brief project overview..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="start-date">Month of project proposal</label>
+                    <input type="month" id="month-proposed" name="month-proposed" required>
+                </div>
+                <div class="form-group">
+                    <label for="end-date">Deadline for project</label>
+                    <input type="month" id="deadline" name="deadline" required>
+                </div>
+                <div class="form-group"><label>Status</label>
+                    <select id="status">
+                      <option>Open</option>
+                      <option>Closed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="application-link">Application Link</label>
+                    <input type="url" id="application-link" name="application-link" placeholder="Enter application link" required>
+                </div>
+                
+
+                <button type="submit" class="submit-btn">Add Project</button>
+            </form>
+
+            <p id="success-message">✅ Project Added Successfully!</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            let dashboard = document.getElementById("dashboard");
+            let mainContent = document.getElementById("main-content");
+
+            if (dashboard.style.left === "0px") {
+                dashboard.style.left = "-250px";
+             mainContent.style.marginLeft = "20px";
+            } else {
+                dashboard.style.left = "0px";
+             mainContent.style.marginLeft = "270px";
+            }
+        }
+
+        document.getElementById("add-project-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const data = {
+                project_id: document.getElementById("project-id").value,
+                project_title: document.getElementById("project-title").value,
+                faculty_name: document.getElementById("faculty-name").value,
+                faculty_id: document.getElementById("faculty-id").value,
+                department: document.getElementById("department").value,
+                skills: document.getElementById("skills").value,
+                overview: document.getElementById("overview").value,
+                month_proposed: document.getElementById("month-proposed").value,
+                deadline: document.getElementById("deadline").value,
+                status: document.getElementById("status").value,
+                application_link: document.getElementById("application-link").value
+            };
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/add_project", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    document.getElementById("success-message").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("success-message").style.display = "none";
+                        window.location.href = "f_projects.html";
+                    }, 2000);
+                } else {
+                    const errorText = await response.text();
+                    alert("❌ Failed to add project:\n" + errorText);
+                }
+            } catch (error) {
+                alert("❌ Error connecting to backend:\n" + error.message);
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+   

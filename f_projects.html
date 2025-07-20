@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Listings</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+            display: flex;
+        }
+
+        /* Hamburger Menu */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+        /* Sidebar / Dashboard */
+        .dashboard {
+            width: 250px;
+            height: 100vh;
+            background-color: #c62828;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            transition: left 0.3s ease-in-out;
+        }
+        .dashboard h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .nav-links a:hover {
+            background: black;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 20px;
+            width: calc(100% - 40px);
+            padding: 20px;
+            text-align: center;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .container {
+            width: 60%;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px auto;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .project-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .details {
+            text-align: right;
+            color: #d32f2f;
+            font-size: 14px;
+        }
+
+        .dropdown-content {
+            display: none;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .apply-btn {
+            background-color: #c62828;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .apply-btn:hover {
+            background-color: black;
+        }
+
+        /* Profile Dropdown */
+        .profile-container {
+            position: relative;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .profile:hover {
+            background: black;
+        }
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .profile-dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .profile-dropdown a:hover {
+            background: #ddd;
+        }
+        .profile-container:hover .profile-dropdown {
+            display: block;
+        }
+        /* Floating Add Button */
+        .add-project-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #c62828;
+            color: white;
+            font-size: 30px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-project-btn:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+        <!-- Hamburger Menu -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <!-- Dashboard -->
+        <div class="dashboard" id="dashboard">
+            <h2>Dashboard</h2>
+            <div class="nav-links">
+                <a href="f_home.html"> Home</a>
+                <a href="f_projects.html"> Projects</a>
+                <a href="f_meetings.html"> Meetings</a>
+    
+                <!-- Profile Dropdown Below Meetings -->
+                <div class="profile-container">
+                    <div class="profile"> Profile</div>
+                    <div class="profile-dropdown">
+                        <a href="f_personal_details.html"> Personal Details</a>
+                        <a href="f_my_projects.html"> My Projects</a>
+                        <a href="login.html"> LogOut</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <h2>Posted Projects</h2>
+
+        <div id="project-list"></div>
+    </div>
+
+    <!-- Floating Add Project Button -->
+    <button class="add-project-btn" onclick="addProject()">+</button>
+
+    <script>
+        function toggleMenu() {
+            const dashboard = document.getElementById("dashboard");
+            // Check the current left position and toggle it between -250px and 0 (visible)
+            if (dashboard.style.left === "0px") {
+                dashboard.style.left = "-250px";
+            } else {
+                dashboard.style.left = "0px";
+            }
+        }
+        
+        function addProject() {
+            window.location.href = "f_add_projects.html";
+        }
+
+        async function loadProjects() {
+            const response = await fetch("http://127.0.0.1:8000/projects");
+            const data = await response.json();
+            const container = document.getElementById("project-list");
+            container.innerHTML = ""; // Clear default content
+
+            data.projects.forEach((project, index) => {
+                const id = `project${index}`;
+                const html = `
+                    <div class="container" onclick="toggleDropdown('${id}')">
+                        <div class="header">
+                            <div>
+                                <span class="project-title">${project.title}</span>
+                            </div>
+                            <div class="details">${project.deadline}</div>
+                        </div>
+                        <div class="dropdown-content" id="${id}">
+                            <p><strong>Overview:</strong> ${project.overview}</p>
+                            <p><strong>Skills:</strong> ${project.skills_required}</p>
+                            <p><strong>Faculty:</strong> ${project.professor}</p>
+                        </div>
+                    </div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        function toggleDropdown(id) {
+            const projectContent = document.getElementById(id);
+            projectContent.style.display = (projectContent.style.display === 'block') ? 'none' : 'block';
+        }
+
+        window.onload = loadProjects;
+    </script>
+
+</body>
+</html>

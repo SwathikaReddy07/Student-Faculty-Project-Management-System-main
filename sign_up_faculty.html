@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 30%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #c62828;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+        }
+
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: 0.3s;
+            width: 100%;
+            background-color: #c62828;
+            color: white;
+        }
+
+        button:hover { opacity: 0.8; }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Faculty Sign Up</h2>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="faculty-email">Email ID:</label>
+                <input type="email" id="faculty-email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="faculty-password">Password:</label>
+                <input type="password" id="faculty-password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="faculty-confirm-password">Confirm Password:</label>
+                <input type="password" id="faculty-confirm-password" required>
+            </div>
+
+            <div class="button-group">
+                <button type="button" onclick="signup()">Sign Up</button>
+            </div>
+
+            <p id="error-message" class="error-message">⚠️ Passwords do not match!</p>
+        </form>
+    </div>
+
+    <script>
+        async function signup() {
+            let email = document.getElementById("faculty-email").value;
+            let password = document.getElementById("faculty-password").value;
+            let confirmPassword = document.getElementById("faculty-confirm-password").value;
+            let errorMessage = document.getElementById("error-message");
+    
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "⚠️ Passwords do not match!";
+                errorMessage.style.display = "block";
+                return;
+            }
+    
+            errorMessage.style.display = "none";
+    
+            try {
+                const response = await fetch("http://localhost:8000/signup", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams({
+                        email: email,
+                        password: password,
+                        confirm_password: confirmPassword
+                    }),
+                });
+    
+                const result = await response.json();
+    
+                if (result.success) {
+                    window.location.href = "f_signup_details.html";
+                } else {
+                    errorMessage.textContent = "⚠️ " + result.message;
+                    errorMessage.style.display = "block";
+                }
+            } catch (error) {
+                console.error("Signup error:", error);
+                errorMessage.textContent = "⚠️ Server error. Please try again.";
+                errorMessage.style.display = "block";
+            }
+        }
+    </script>
+    
+</body>
+</html>

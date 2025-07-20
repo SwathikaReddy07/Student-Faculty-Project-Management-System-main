@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Meetings</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+            display: flex;
+        }
+
+        /* Sidebar / Dashboard */
+        .dashboard {
+            width: 250px;
+            height: 100vh;
+            background-color: #c62828;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            transition: left 0.3s ease-in-out;
+        }
+        .dashboard h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .nav-links a:hover {
+            background: black;
+        }
+
+        /* Profile Dropdown */
+        .profile-dropdown {
+            position: relative;
+            cursor: pointer;
+            padding: 10px;
+            background-color:#c62828;
+            border-radius: 5px;
+        }
+        .profile-dropdown:hover .profile-options {
+            display: block;
+        }
+
+        .profile-dropdown:hover {
+            background-color: black;
+        }
+        .profile-options {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background: white;
+            color: black;
+            width: 100%;
+            overflow: hidden;
+        }
+        .profile-options a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            border-bottom: 1px solid #ccc;
+        }
+        .profile-dropdown a:hover {
+            background: #ddd;
+        }
+
+        .project-title {
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* Hamburger Menu */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 20px;
+            width: calc(100% - 40px);
+            padding: 20px;
+            transition: margin-left 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        /* Free Slot Form */
+        .slot-container {
+            width: 60%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            text-align: center;
+        }
+        .slot-container input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .slot-container button {
+            background-color: #c62828;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .slot-container button:hover {
+            background-color: black;
+        }
+
+        /* Meeting Requests */
+        .meeting-container {
+            width: 60%;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px auto;
+            text-align: left;
+        }
+        .meeting-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .meeting-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .meeting-details {
+            color: #d32f2f;
+            font-size: 14px;
+        }
+        .meeting-dropdown {
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+            margin-top: 10px;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .accept-btn, .later-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .accept-btn {
+            background-color: #388e3c;
+            color: white;
+        }
+        .later-btn {
+            background-color: #fbc02d;
+            color: black;
+        }
+        .accept-btn:hover {
+            background-color: #2e7d32;
+        }
+        .later-btn:hover {
+            background-color: #f9a825;
+        }
+
+        /* Venue Input */
+        .venue-container {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .venue-container input {
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .venue-container button {
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <h2>Dashboard</h2>
+        <div class="nav-links">
+            <a href="f_home.html"> Home</a>
+            <a href="f_projects.html"> Projects</a>
+            <a href="f_meetings.html"> Meetings</a>
+        </div>
+        <div class="profile-dropdown"> Profile
+            <div class="profile-options">
+                <a href="f_personal_details.html">Personal Details</a>
+                <a href="f_my_projects.html">My Projects</a>
+                <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Faculty Meetings</h2>
+
+        <div class="slot-container">
+            <h3>Add Free Slot</h3>
+            <input type="date">
+            <input type="time"><br>
+            <button>Add Slot</button>
+        </div>
+
+        <div class="meeting-container">
+            <div class="meeting-header">
+                <span class="meeting-title">Alice</span>
+                <span class="meeting-details">Mar 28, 3:00 PM</span>
+            </div>
+            <span class="project-title">Blockchain in Medicine</span>
+            <div class="meeting-dropdown">
+                <div class="action-buttons">
+                    <button class="accept-btn" onclick="acceptMeeting(this)">Accept Meeting</button>
+                    <button class="later-btn">Meet Later</button>
+                </div>
+                <div class="venue-container">
+                    <input type="text" placeholder="Enter Venue">
+                    <button>Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            let dashboard = document.getElementById("dashboard");
+            dashboard.style.left = dashboard.style.left === "0px" ? "-250px" : "0px";
+        }
+
+        function acceptMeeting(button) {
+            let venueContainer = button.parentElement.nextElementSibling;
+            venueContainer.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

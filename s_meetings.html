@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetings</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+            display: flex;
+        }
+
+        /* Sidebar / Dashboard */
+        .dashboard {
+            width: 250px;
+            height: 100vh;
+            background-color: #c62828;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: fixed;
+            left: -250px; /* Initially hidden */
+            top: 0;
+            transition: left 0.3s ease-in-out;
+        }
+        .dashboard h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .nav-links a:hover {
+            background: black;
+        }
+
+        /* Profile Dropdown */
+        .profile-container {
+            position: relative;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .profile:hover {
+            background: black;
+        }
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .profile-dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .profile-dropdown a:hover {
+            background: #ddd;
+        }
+        .profile-container:hover .profile-dropdown {
+            display: block;
+        }
+
+        /* Hamburger Menu */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 20px;
+            width: calc(100% - 40px);
+            padding: 20px;
+            text-align: center;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        #professor-search {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #c62828;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #search-button {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #c62828;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+            transition: background 0.3s;
+        }
+
+        #search-button:hover {
+            background-color: black;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 42px;
+            width: 300px;
+            background: white;
+            border: 1px solid #c62828;
+            border-radius: 5px;
+            display: none;
+            z-index: 10;
+        }
+
+        .dropdown div {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            transition: background 0.3s;
+        }
+
+        .dropdown div:hover {
+            background: #f8d7da;
+        }
+
+        /* Calendar */
+        .calendar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calendar-box {
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <h2>Dashboard</h2>
+        <div class="nav-links">
+            <a href="s_home.html"> Home</a>
+            <a href="s_projects.html"> Projects</a>
+            <a href="s_meetings.html"> Meetings</a>
+
+            <!-- Profile Dropdown Below Meetings -->
+            <div class="profile-container">
+                <div class="profile"> Profile</div>
+                <div class="profile-dropdown">
+                    <a href="s_personal_details.html"> Personal Details</a>
+                    <a href="s_my_projects.html"> My Projects</a>
+                    <a href="s_my_applications.html"> My Applications</a>
+                    <a href="login.html"> Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content" id="main-content">
+        <div class="header"> Schedule Your Meeting</div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="professor-search" placeholder="Search for a professor..." onkeyup="showDropdown()">
+            <button id="search-button" onclick="searchProfessor()">Search</button>
+            <div class="dropdown" id="dropdown-list"></div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="calendar-container">
+            <div class="calendar-box">
+                <h3>Available Slots</h3>
+                <iframe src="https://calendar.google.com/calendar/embed?src=your_calendar_link_here"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            let dashboard = document.getElementById("dashboard");
+            let mainContent = document.getElementById("main-content");
+
+            if (dashboard.style.left === "0px") {
+                dashboard.style.left = "-250px";
+                mainContent.style.marginLeft = "20px";
+            } else {
+                dashboard.style.left = "0px";
+                mainContent.style.marginLeft = "270px";
+            }
+        }
+    </script>
+
+</body>
+</html>

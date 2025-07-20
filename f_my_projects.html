@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+            display: flex;
+        }
+
+        /* Sidebar / Dashboard */
+        .dashboard {
+            width: 250px;
+            height: 100vh;
+            background-color: #c62828;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            transition: left 0.3s ease-in-out;
+        }
+        .dashboard h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .nav-links a:hover {
+            background: black;
+        }
+
+        /* Profile Dropdown */
+        .profile-container {
+            position: relative;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .profile:hover {
+            background: black;
+        }
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .profile-dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .profile-dropdown a:hover {
+            background: #ddd;
+        }
+        .profile-container:hover .profile-dropdown {
+            display: block;
+        }
+
+        /* Hamburger Menu */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 20px;
+            width: calc(100% - 40px);
+            padding: 20px;
+            text-align: center;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .container {
+            width: 60%;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px auto;
+            cursor: pointer;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .project-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .details {
+            text-align: right;
+            color: #d32f2f;
+            font-size: 14px;
+        }
+        .dropdown-content {
+            display: none;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+            margin-top: 10px;
+        }
+        .status {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+        }
+        .completed {
+            background-color: green;
+        }
+        .in-progress {
+            background-color: #d4a017;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <h2>Dashboard</h2>
+        <div class="nav-links">
+            <a href="f_home.html"> Home</a>
+            <a href="f_projects.html"> Projects</a>
+            <a href="f_meetings.html"> Meetings</a>
+
+            <!-- Profile Dropdown -->
+            <div class="profile-container">
+                <div class="profile"> Profile</div>
+                <div class="profile-dropdown">
+                    <a href="f_personal_details.html"> Personal Details</a>
+                    <a href="f_my_projects.html"> My Projects</a>
+                    <a href="login.html"> LogOut</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <h2>My Projects</h2>
+
+        <div id="projects-list"></div>
+
+    </div>
+
+    <script>
+        function toggleDropdown(id) {
+            let content = document.getElementById(id);
+            let allDropdowns = document.querySelectorAll(".dropdown-content");
+
+            allDropdowns.forEach(drop => {
+                if (drop.id !== id) drop.style.display = "none";
+            });
+
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+
+        function toggleMenu() {
+            let dashboard = document.getElementById("dashboard");
+            let mainContent = document.getElementById("main-content");
+
+            if (dashboard.style.left === "0px") {
+                dashboard.style.left = "-250px";
+                mainContent.style.marginLeft = "20px";
+            } else {
+                dashboard.style.left = "0px";
+                mainContent.style.marginLeft = "270px";
+            }
+        }
+
+        // Dummy data (Replace this with backend data)
+        let professorName = "Mr. John Dae"; // This will be replaced by actual login user
+        let projects = [
+            {
+                title: "AI-based Disease Detection",
+                mentor: "Mr. John Dae",
+                status: "Completed",
+                overview: "Used deep learning for early-stage disease detection.",
+                skills: "Python, TensorFlow, Medical Image Processing",
+                students: ["Alice Johnson", "Mark Lee", "Sarah Adams"],
+                applicationLink: "https://forms.gle/dummyLink1"
+            },
+            {
+                title: "Smart Traffic Management System",
+                mentor: "Dr. Emily Clark",
+                status: "In-Progress",
+                overview: "Developing an IoT-based smart traffic control system.",
+                skills: "Raspberry Pi, IoT, Machine Learning",
+                students: ["David Brown", "Lisa White", "Kevin Smith"],
+                applicationLink: "https://forms.gle/dummyLink2"
+            }
+        ];
+
+        let projectContainer = document.getElementById("projects-list");
+
+        projects.forEach((project, index) => {
+            if (project.mentor === professorName) {
+                projectContainer.innerHTML += `
+                    <div class="container" onclick="toggleDropdown('project${index}')">
+                        <div class="header">
+                            <div>
+                                <span class="project-title">${project.title}</span>
+                                <p>Mentored by: ${project.mentor}</p>
+                            </div>
+                            <div class="details">
+                                <span class="status ${project.status === "Completed" ? "completed" : "in-progress"}">
+                                    ${project.status}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="dropdown-content" id="project${index}">
+                            <p><strong>Overview:</strong> ${project.overview}</p>
+                            <p><strong>Skills Gained:</strong> ${project.skills}</p>
+                            <p><strong>Students:</strong> ${project.students.join(", ")}</p>
+                            <a href="${project.applicationLink}" target="_blank" class="application-btn">Application</a>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+
+</body>
+</html>

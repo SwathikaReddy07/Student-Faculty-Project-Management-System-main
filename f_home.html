@@ -1,0 +1,160 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+        }
+        .navbar {
+            background-color: #c62828;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-item {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+            border-radius: 5px;
+        }
+        .nav-item:hover {
+            background-color: #130404;
+        }
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #c62828;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .dropdown a {
+            display: block;
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+            border-radius: 5px;
+        }
+        .dropdown a:hover {
+            background-color: #100606;
+        }
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+        .icon {
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        /* Image Section */
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 80%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            text-align: center;
+            padding: 20px;
+        }
+        .welcome {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .content {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .explore-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #c62828;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+        .explore-btn:hover {
+            background-color: #9a1f1f;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="f_home.html" class="nav-item">Home</a>
+            <a href="f_projects.html" class="nav-item">Projects</a> <!-- Linked to Projects Page -->
+            <a href="f_meetings.html" class="nav-item">Meetings</a> <!--  Meetings Page Linked -->
+            <div class="nav-item">Profile
+                <div class="dropdown">
+                    <a href="f_personal_details.html">Personal Details</a>  <!-- Linked to Personal Details Page -->
+                    <a href="f_my_projects.html">My Projects</a> <!-- Placeholder for user projects -->
+                    <a href="login.html">LogOut</a>
+                </div>
+            </div>
+        </div>
+        <div class="icons">
+            <i class="fas fa-bell icon"></i>
+            <i class="fas fa-cog icon"></i>
+            <i class="fas fa-user icon"></i>
+        </div>
+    </div>
+
+    <!-- Image Section -->
+    <div class="image-container">
+        <img src="https://www.mahindrauniversity.edu.in/sites/googlene/images/videoThumb.jpg" alt="Project Overview">
+    </div>
+
+    <!-- Description Below Image -->
+    <div class="container">
+        <div class="welcome">Welcome to Mahindra University's Project Portal</div>
+        <div class="content">
+            <p>Empowering Final-Year Students with Research & Innovation</p>
+            <p>Are you a 4th-year student at Mahindra University looking for exciting project opportunities? Explore cutting-edge research projects led by esteemed professors across various disciplines. Connect with mentors, collaborate on real-world challenges, and enhance your academic journey!</p>
+            <p><strong>How It Works?</strong></p>
+            <ul style="text-align: left; display: inline-block;">
+                <li>Browse projects from different departments</li>
+                <li>Apply under faculty mentors of your choice</li>
+                <li>Work on innovative ideas & gain hands-on experience</li>
+                <li>Elevate your final-year portfolio with impactful research</li>
+            </ul>
+            
+            <p>📩 Have questions? Contact us at [Support Email].</p>
+        </div>
+    </div>
+
+</body>
+</html>

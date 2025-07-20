@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Personal Details</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+            display: flex;
+        }
+
+        /* Sidebar / Dashboard */
+        .dashboard {
+            width: 250px;
+            height: 100vh;
+            background-color: #c62828;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            transition: left 0.3s ease-in-out;
+        }
+        .dashboard h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .nav-links a:hover {
+            background: black;
+        }
+
+        /* Profile Dropdown */
+        .profile-container {
+            position: relative;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .profile:hover {
+            background: black;
+        }
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .profile-dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .profile-dropdown a:hover {
+            background: #ddd;
+        }
+        .profile-container:hover .profile-dropdown {
+            display: block;
+        }
+
+        /* Hamburger Menu */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #c62828;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 20px;
+            width: calc(100% - 40px);
+            padding: 20px;
+            text-align: center;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .container {
+            width: 50%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin: auto;
+        }
+
+        h2 {
+            color: #c62828;
+        }
+
+        .form-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+        }
+
+        input:disabled, select:disabled {
+            background-color: #e0e0e0;
+            cursor: not-allowed;
+        }
+
+        .button-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .edit-btn {
+            background-color: #c62828;
+            color: white;
+        }
+
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Success message */
+        #success-message {
+            display: none;
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <h2>Dashboard</h2>
+        <div class="nav-links">
+            <a href="f_home.html"> Home</a>
+            <a href="f_projects.html"> Projects</a>
+            <a href="f_meetings.html"> Meetings</a>
+
+            <!-- Profile Dropdown -->
+            <div class="profile-container">
+                <div class="profile"> Profile</div>
+                <div class="profile-dropdown">
+                    <a href="f_personal_details.html"> Personal Details</a>
+                    <a href="f_my_projects.html"> My Projects</a>
+                    <a href="login.html"> LogOut</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content" id="main-content">
+        <div class="container">
+            <h2>Faculty Personal Details</h2>
+            <form id="personal-details-form">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" value="John" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="middle-name">Middle Name (Optional)</label>
+                    <input type="text" id="middle-name" value="" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" value="Doe" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" disabled>
+                        <option selected>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="johndoe@example.com" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" value="123-456-7890" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <input type="text" id="department" value="Computer Science" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" disabled>
+                        <option selected>Assistant Professor</option>
+                        <option>Associate Professor</option>
+                        <option>Professor</option>
+                        <option>Head of Department</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="edit-btn" onclick="enableEditing()">Edit</button>
+                    <button type="button" class="save-btn" onclick="saveChanges()" disabled>Save</button>
+                </div>
+            </form>
+            <p id="success-message">✅ Changes saved successfully!</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("dashboard").classList.toggle("open");
+            document.getElementById("main-content").classList.toggle("shift");
+        }
+
+        function enableEditing() {
+            document.querySelectorAll("input, select, textarea").forEach(input => input.disabled = false);
+            document.querySelector(".save-btn").disabled = false;
+        }
+
+        function saveChanges() {
+            document.querySelectorAll("input, select, textarea").forEach(input => input.disabled = true);
+            document.querySelector(".save-btn").disabled = true;
+            document.getElementById("success-message").style.display = "block";
+            setTimeout(() => document.getElementById("success-message").style.display = "none", 3000);
+        }
+    </script>
+
+    <script>
+        function toggleMenu() {
+            let dashboard = document.getElementById("dashboard");
+            let mainContent = document.getElementById("main-content");
+            let currentLeft = window.getComputedStyle(dashboard).left;
+
+            dashboard.style.left = (currentLeft === "-250px") ? "0px" : "-250px";
+            mainContent.style.marginLeft = (currentLeft === "-250px") ? "270px" : "20px";
+        }
+    </script>
+
+</body>
+</html>

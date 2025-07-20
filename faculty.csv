@@ -1,0 +1,32 @@
+faculty_id,first_name,middle_name,last_name,email,phone_number,department,role,expertise,projects_posted,password
+jhl_cse,John,Heather,Leonard,john.leonard@mahindrauniversity.edu.in,(+91) 9229545151,Computer Science,Assistant Professor,"['Data Science', 'AI', 'Cybersecurity']","['jl_computer_01', 'jl_computer_02', 'jl_computer_03', 'jl_computer_04']",sbQhoPTu5J
+tm_ecm,Teresa,,Myers,teresa.myers@mahindrauniversity.edu.in,(+91) 9688543149,Electronics and Computation,Associate Professor,['Networking'],[],CHwc8nZ3Yh
+dm_cse,Donna,,Mendoza,donna.mendoza@mahindrauniversity.edu.in,(+91) 9957568230,Computer Science,Associate Professor,"['Embedded Systems', 'Data Science', 'Machine Learning']","['dm_computer_01', 'dm_computer_02']",OaSVb48fzL
+kr_ece,Kathy,,Ray,kathy.ray@mahindrauniversity.edu.in,(+91) 9378894922,Electronics and Communication,Professor,"['Machine Learning', 'AI', 'Cybersecurity']",['kr_electronics_01'],MhRuXt3fbg
+mr_civ,Meagan,,Richmond,meagan.richmond@mahindrauniversity.edu.in,(+91) 6421573003,Civil Engineering,Associate Professor,['Data Science'],"['mr_civil_01', 'mr_civil_02']",Vwav0lzq16
+lkf_ari,Lisa,Kenneth,Ford,lisa.ford@mahindrauniversity.edu.in,(+91) 9452139764,Artificial Intelligence,Assistant Professor,"['Machine Learning', 'Data Science', 'Networking']","['lf_artificial_01', 'lf_artificial_02', 'lf_artificial_03', 'lf_artificial_04']",DehKLkSrli
+lp_ece,Leslie,,Price,leslie.price@mahindrauniversity.edu.in,(+91) 8222348441,Electronics and Communication,Professor,['AI'],['lp_electronics_01'],8r0w5CB0kA
+cjr_eee,Carla,John,Roberts,carla.roberts@mahindrauniversity.edu.in,(+91) 7600650070,Electrical Engineering,Professor,['Machine Learning'],"['cr_electrical_01', 'cr_electrical_02', 'cr_electrical_03']",GyJijtFCFb
+deb_ece,Donald,Elizabeth,Bowman,donald.bowman@mahindrauniversity.edu.in,(+91) 9646375619,Electronics and Communication,Associate Professor,"['Cybersecurity', 'Embedded Systems']","['db_electronics_01', 'db_electronics_02', 'db_electronics_03', 'db_electronics_04', 'db_electronics_05']",1XVUIsBgwH
+gh_ari,Grant,,Hampton,grant.hampton@mahindrauniversity.edu.in,(+91) 9887633415,Artificial Intelligence,Assistant Professor,['Machine Learning'],"['gh_artificial_01', 'gh_artificial_02', 'gh_artificial_03', 'gh_artificial_04']",g4MF3Mu4nG
+cm_bit,Cathy,,Meyers,cathy.meyers@mahindrauniversity.edu.in,(+91) 6926292714,Bio Technology,Professor,"['AI', 'Embedded Systems']","['cm_bio_01', 'cm_bio_02']",15oCbXQuCZ
+kh_mec,Karen,,Hull,karen.hull@mahindrauniversity.edu.in,(+91) 8704528028,Mechanical Engineering,Professor,['AI'],"['kh_mechanical_01', 'kh_mechanical_02']",JSfy4mK5QX
+sm_mec,Shelby,,Mckinney,shelby.mckinney@mahindrauniversity.edu.in,(+91) 8101466121,Mechanical Engineering,Professor,"['Machine Learning', 'Networking', 'Embedded Systems']","['sm_mechanical_01', 'sm_mechanical_02']",mNCe2iJj0z
+wd_civ,William,,Davis,william.davis@mahindrauniversity.edu.in,(+91) 7733523583,Civil Engineering,Assistant Professor,"['Machine Learning', 'Embedded Systems']","['wd_civil_01', 'wd_civil_02']",zMbILr0ltE
+ej_bit,Elizabeth,,Johnson,elizabeth.johnson@mahindrauniversity.edu.in,(+91) 8920017784,Bio Technology,Professor,"['Data Science', 'Embedded Systems', 'Networking']",['ej_bio_01'],VJuBQq8B4t
+ar_ari,Anthony,,Ramirez,anthony.ramirez@mahindrauniversity.edu.in,(+91) 6200759892,Artificial Intelligence,Professor,['Embedded Systems'],"['ar_artificial_01', 'ar_artificial_02', 'ar_artificial_03']",bPTthasR2q
+iw_ece,Isaac,,Watkins,isaac.watkins@mahindrauniversity.edu.in,(+91) 8140069216,Electronics and Communication,Assistant Professor,['Data Science'],"['iw_electronics_01', 'iw_electronics_02', 'iw_electronics_03']",bIGOPgEo3E
+cb_mec,Courtney,,Bolton,courtney.bolton@mahindrauniversity.edu.in,(+91) 6850039291,Mechanical Engineering,Professor,['Cybersecurity'],[],UwrAbmr4qM
+cg_ecm,Cheryl,,Gonzalez,cheryl.gonzalez@mahindrauniversity.edu.in,(+91) 9487605642,Electronics and Computation,Professor,['Data Science'],['cg_electronics_01'],rzKobNAyli
+edg_ari,Emily,Dan,Gregory,emily.gregory@mahindrauniversity.edu.in,(+91) 8778045510,Artificial Intelligence,Assistant Professor,['Machine Learning'],"['eg_artificial_01', 'eg_artificial_02']",KJAErI723H
+dt_civ,Dennis,,Turner,dennis.turner@mahindrauniversity.edu.in,(+91) 7329498078,Civil Engineering,Assistant Professor,"['AI', 'Networking']",[],UDdiD41y2B
+mw_cse,Melanie,,Wolf,melanie.wolf@mahindrauniversity.edu.in,(+91) 6949732537,Computer Science,Assistant Professor,"['Embedded Systems', 'AI']","['mw_computer_01', 'mw_computer_02', 'mw_computer_03']",p6Y9gK6sRu
+hj_cam,Heather,,Johnson,heather.johnson@mahindrauniversity.edu.in,(+91) 8709245020,Computational Mathematics,Professor,"['Machine Learning', 'Embedded Systems', 'Data Science']",[],juovRPqCEx
+sa_eee,Steven,,Anderson,steven.anderson@mahindrauniversity.edu.in,(+91) 6730922843,Electrical Engineering,Professor,['Machine Learning'],"['sa_electrical_01', 'sa_electrical_02']",AHzsmiWXtV
+tm_cam,Timothy,,Martinez,timothy.martinez@mahindrauniversity.edu.in,(+91) 6911094311,Computational Mathematics,Associate Professor,"['Data Science', 'Cybersecurity', 'AI']","['tm_computational_01', 'tm_computational_02', 'tm_computational_03']",Spz8L8s6t8
+ygg_mec,Yolanda,Gregory,Greene,yolanda.greene@mahindrauniversity.edu.in,(+91) 8837913280,Mechanical Engineering,Associate Professor,['Machine Learning'],['yg_mechanical_01'],PJbEUZR4xs
+cb_cse,Carol,,Brown,carol.brown@mahindrauniversity.edu.in,(+91) 6966573317,Computer Science,Assistant Professor,"['Machine Learning', 'Networking', 'Cybersecurity']",['cb_computer_01'],dip3w0C22j
+ss_ecm,Steven,,Shannon,steven.shannon@mahindrauniversity.edu.in,(+91) 9881809791,Electronics and Computation,Associate Professor,['Machine Learning'],"['ss_electronics_01', 'ss_electronics_02', 'ss_electronics_03']",YzGpjBSyPU
+njw_ecm,Nicholas,Jennifer,Willis,nicholas.willis@mahindrauniversity.edu.in,(+91) 6930659358,Electronics and Computation,Professor,['Embedded Systems'],['nw_electronics_01'],ZNf4FHN0mb
+kb_cab,Karla,,Berg,karla.berg@mahindrauniversity.edu.in,(+91) 6324034439,Computational Biology,Professor,['Embedded Systems'],"['kb_computational_01', 'kb_computational_02']",0d1CpGQeId
+tg_ari,Trisha,,Gumidelli,trisha.gumidelli@mahindrauniversity.edu.in,9032758165,Artificial Intelligence,Assistant Professor,"Python, Machine Learning","tg_ari_02, tg_ari_03",12

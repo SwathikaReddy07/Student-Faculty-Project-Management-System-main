@@ -1,0 +1,51 @@
+meeting_id,project_id,faculty_id,student_id,meeting_date,meeting_time,meeting_venue
+lf_artificial_02@2025-05-04_15:50_TR5,lf_artificial_02,lkf_ari,se23uciv006,2025-05-04,15:50,Tutorial Room 5
+yg_mechanical_01@2025-05-04_17:49_TR5,yg_mechanical_01,ygg_mec,se23ueee012,2025-05-04,17:49,Tutorial Room 5
+mw_computer_01@2025-05-04_14:41_CR12,mw_computer_01,mw_cse,se21ubit001,2025-05-04,14:41,Classroom 12
+tm_computational_03@2025-05-04_14:30_LH5,tm_computational_03,tm_cam,se22uari011,2025-05-04,14:30,Lecture Hall 5
+cr_electrical_03@2025-05-04_15:52_CR3,cr_electrical_03,cjr_eee,se21ucab004,2025-05-04,15:52,Classroom 3
+jl_computer_02@2025-05-04_16:51_TR6,jl_computer_02,jhl_cse,se23uari014,2025-05-04,16:51,Tutorial Room 6
+mr_civil_01@2025-05-04_17:47_CR12,mr_civil_01,mr_civ,se24uari008,2025-05-04,17:47,Classroom 12
+cb_computer_01@2025-05-04_17:46_TR2,cb_computer_01,cb_cse,se22ucam004,2025-05-04,17:46,Tutorial Room 2
+nw_electronics_01@2025-05-04_15:59_CR4,nw_electronics_01,njw_ecm,se23ucse006,2025-05-04,15:59,Classroom 4
+lp_electronics_01@2025-05-04_16:07_TR7,lp_electronics_01,lp_ece,se21uari003,2025-05-04,16:07,Tutorial Room 7
+cr_electrical_03@2025-05-04_17:37_TR4,cr_electrical_03,cjr_eee,se21ucab004,2025-05-04,17:37,Tutorial Room 4
+wd_civil_01@2025-05-04_15:03_CR1,wd_civil_01,wd_civ,se22ubit004,2025-05-04,15:03,Classroom 1
+sm_mechanical_01@2025-05-04_16:32_FO3,sm_mechanical_01,sm_mec,se21ubit001,2025-05-04,16:32,Faculty Office 3
+db_electronics_03@2025-05-04_16:31_CR12,db_electronics_03,deb_ece,se24uecm008,2025-05-04,16:31,Classroom 12
+gh_artificial_04@2025-05-04_16:32_TR5,gh_artificial_04,gh_ari,se21uecm011,2025-05-04,16:32,Tutorial Room 5
+jl_computer_02@2025-05-04_17:44_LH6,jl_computer_02,jhl_cse,se24uece002,2025-05-04,17:44,Lecture Hall 6
+ar_artificial_03@2025-05-04_16:38_LH2,ar_artificial_03,ar_ari,se24uece001,2025-05-04,16:38,Lecture Hall 2
+gh_artificial_03@2025-05-04_15:26_TR5,gh_artificial_03,gh_ari,se21ucab004,2025-05-04,15:26,Tutorial Room 5
+gh_artificial_03@2025-05-04_14:33_LH7,gh_artificial_03,gh_ari,se24ubit016,2025-05-04,14:33,Lecture Hall 7
+cr_electrical_01@2025-05-04_15:13_LH1,cr_electrical_01,cjr_eee,se23umec007,2025-05-04,15:13,Lecture Hall 1
+jl_computer_03@2025-05-04_14:32_CR17,jl_computer_03,jhl_cse,se22uecm009,2025-05-04,14:32,Classroom 17
+lf_artificial_04@2025-05-04_16:33_FO1,lf_artificial_04,lkf_ari,se21uari002,2025-05-04,16:33,Faculty Office 1
+jl_computer_02@2025-05-04_15:19_FO1,jl_computer_02,jhl_cse,se23uecm005,2025-05-04,15:19,Faculty Office 1
+jl_computer_03@2025-05-04_17:00_FO3,jl_computer_03,jhl_cse,se21ubit003,2025-05-04,17:00,Faculty Office 3
+jl_computer_04@2025-05-04_14:45_CR4,jl_computer_04,jhl_cse,se21uari004,2025-05-04,14:45,Classroom 4
+kr_electronics_01@2025-05-04_14:59_LH3,kr_electronics_01,kr_ece,se21ubit015,2025-05-04,14:59,Lecture Hall 3
+kb_computational_02@2025-05-04_15:44_LH6,kb_computational_02,kb_cab,se22ucam002,2025-05-04,15:44,Lecture Hall 6
+ej_bio_01@2025-05-04_15:17_FO2,ej_bio_01,ej_bit,se23ucab010,2025-05-04,15:17,Faculty Office 2
+kb_computational_02@2025-05-04_17:16_CR6,kb_computational_02,kb_cab,se24ucam007,2025-05-04,17:16,Classroom 6
+mw_computer_01@2025-05-04_14:26_LH2,mw_computer_01,mw_cse,se24uari001,2025-05-04,14:26,Lecture Hall 2
+dm_computer_01@2025-05-04_17:37_CR2,dm_computer_01,dm_cse,se21uari003,2025-05-04,17:37,Classroom 2
+lp_electronics_01@2025-05-04_17:25_CR6,lp_electronics_01,lp_ece,se23umec008,2025-05-04,17:25,Classroom 6
+nw_electronics_01@2025-05-04_16:50_LH1,nw_electronics_01,njw_ecm,se22ueee001,2025-05-04,16:50,Lecture Hall 1
+cr_electrical_01@2025-05-04_17:43_CR16,cr_electrical_01,cjr_eee,se21ucab008,2025-05-04,17:43,Classroom 16
+ej_bio_01@2025-05-04_15:40_TR6,ej_bio_01,ej_bit,se22ucse005,2025-05-04,15:40,Tutorial Room 6
+wd_civil_02@2025-05-04_14:54_FO3,wd_civil_02,wd_civ,se24ucse003,2025-05-04,14:54,Faculty Office 3
+iw_electronics_02@2025-05-04_14:43_CR12,iw_electronics_02,iw_ece,se21ubit006,2025-05-04,14:43,Classroom 12
+mr_civil_01@2025-05-04_17:29_CR16,mr_civil_01,mr_civ,se24ueee002,2025-05-04,17:29,Classroom 16
+gh_artificial_01@2025-05-04_15:21_TR1,gh_artificial_01,gh_ari,se22ueee011,2025-05-04,15:21,Tutorial Room 1
+kb_computational_02@2025-05-04_15:21_CR18,kb_computational_02,kb_cab,se22ucam002,2025-05-04,15:21,Classroom 18
+mw_computer_02@2025-05-04_17:52_LH2,mw_computer_02,mw_cse,se24ubit002,2025-05-04,17:52,Lecture Hall 2
+tm_computational_03@2025-05-04_15:44_CR5,tm_computational_03,tm_cam,se22ueee003,2025-05-04,15:44,Classroom 5
+gh_artificial_04@2025-05-04_16:01_TR3,gh_artificial_04,gh_ari,se21uecm011,2025-05-04,16:01,Tutorial Room 3
+ss_electronics_01@2025-05-04_14:50_LH6,ss_electronics_01,ss_ecm,se22ueee004,2025-05-04,14:50,Lecture Hall 6
+yg_mechanical_01@2025-05-04_15:37_LH7,yg_mechanical_01,ygg_mec,se23uecm001,2025-05-04,15:37,Lecture Hall 7
+wd_civil_02@2025-05-04_17:37_TR6,wd_civil_02,wd_civ,se21ubit006,2025-05-04,17:37,Tutorial Room 6
+nw_electronics_01@2025-05-04_17:07_TR7,nw_electronics_01,njw_ecm,se24uari013,2025-05-04,17:07,Tutorial Room 7
+gh_artificial_03@2025-05-04_14:15_CR11,gh_artificial_03,gh_ari,se21ucab004,2025-05-04,14:15,Classroom 11
+tm_computational_01@2025-05-04_17:11_FO3,tm_computational_01,tm_cam,se23ucab006,2025-05-04,17:11,Faculty Office 3
+cg_electronics_01@2025-05-04_17:34_TR5,cg_electronics_01,cg_ecm,se23uari009,2025-05-04,17:34,Tutorial Room 5

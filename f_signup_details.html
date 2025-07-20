@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Personal Details</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #ecdbbc;
+            color: #333;
+            display: flex;
+        }
+
+        .content {
+            margin-left: 20px;
+            width: calc(100% - 40px);
+            padding: 20px;
+            text-align: center;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .container {
+            width: 50%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin: auto;
+        }
+
+        h2 {
+            color: #c62828;
+        }
+
+        .form-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+        }
+
+        .button-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .create-btn {
+            background-color: #c62828;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .create-btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Content -->
+    <div class="content" id="main-content">
+        <div class="container">
+            <h2>Faculty Personal Details</h2>
+            <form id="personal-details-form" onsubmit="handleCreateFaculty(event)">
+                <div class="form-group">
+                    <label for="faculty-id">Faculty ID</label>
+                    <input type="text" id="faculty-id" >
+                </div>
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name">
+                </div>
+                <div class="form-group">
+                    <label for="middle-name">Middle Name (Optional)</label>
+                    <input type="text" id="middle-name">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone">
+                </div>
+                <div class="form-group">
+                    <label>Department</label>
+                    <select id="department">
+                      <option>Computer Science</option>
+                      <option>Artificial Intelligence</option>
+                      <option>Electrical Engineering</option>
+                      <option>Mechanical Engineering</option>
+                      <option>Civil Engineering</option>
+                      <option>Electronics and Communication</option>
+                      <option>Biotechnology</option>
+                      <option>Computational Biology</option>
+                      <option>Computation Mathematics</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role">
+                        <option selected>Assistant Professor</option>
+                        <option>Associate Professor</option>
+                        <option>Professor</option>
+                        <option>Head of Department</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="expertise">Expertise</label>
+                    <input type="text" id="expertise">
+                </div>
+                <div class="form-group"><label>Password</label><input type="password" id="password"></div>
+                <div class="button-group">
+                    <button type="submit" class="create-btn">Create Faculty</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        async function handleCreateFaculty(event) {
+            event.preventDefault();  // prevents form from submitting traditionally
+    
+            const formData = new FormData();
+            formData.append("faculty_id", document.getElementById("faculty-id").value);
+            formData.append("first_name", document.getElementById("first-name").value);
+            formData.append("middle_name", document.getElementById("middle-name").value);
+            formData.append("last_name", document.getElementById("last-name").value);
+            formData.append("email", document.getElementById("email").value);
+            formData.append("phone_number", document.getElementById("phone").value);  // ✅ corrected
+            formData.append("department", document.getElementById("department").value);
+            formData.append("role", document.getElementById("role").value);
+            formData.append("expertise", document.getElementById("expertise").value);
+            formData.append("password", document.getElementById("password").value);
+    
+            try {
+                const response = await fetch("http://127.0.0.1:8000/faculty_signup_details", {
+                    method: "POST",
+                    body: formData,
+                });
+    
+                const result = await response.json();
+                alert(result.message);
+                if (result.status === "success") {
+                    window.location.href = "login.html";
+                }
+            } catch (error) {
+                alert("An error occurred: " + error.message);
+            }
+        }
+    </script>    
+</body>
+</html>
